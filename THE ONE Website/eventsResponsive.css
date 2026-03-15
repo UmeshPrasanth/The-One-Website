@@ -1,0 +1,355 @@
+
+/* Small Devices (Mobile ≤ 768px) */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  /* Navbar */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background: #151515;
+    width: 100%;
+    padding: 20px;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Mapp Section */
+  .mapp {
+    height: auto;
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .mapp .cont {
+    padding: 30px 60px;
+    justify-content: flex-start;
+  }
+
+  .mapp .textt {
+    font-size: 35px;
+  }
+
+  .mapp .bckgrnd {
+    height: 350px;
+  }
+
+  /* All Events */
+  .all-events {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .all-events .conttt {
+    padding: 20px;
+  }
+
+  .all-events .titl {
+    font-size: 40px;
+  }
+
+  .all-events .vid {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+  }
+
+  /* Theory */
+  .theory {
+    padding: 20px;
+  }
+
+  .theory .titt {
+    font-size: 30px;
+  }
+
+  .theory p {
+    font-size: 15px;
+  }
+
+
+  /* Footer */
+  .footer-3 {
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .footer-3 .contttt {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-3 .leftt h2 {
+    font-size: 30px;
+  }
+}
+
+
+  /* Mobile Tickets Layout */
+@media (max-width: 768px) {
+  .ticketss {
+    padding: 20px;
+  }
+
+  .ticketss .tick {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 0;
+    border-bottom: 1px solid #222;
+  }
+
+  .ticketss .tick .datepl {
+    flex-direction: column;
+    align-items: flex-start;
+    border: none;
+    padding: 0;
+    margin-bottom: 8px;
+  }
+
+  .ticketss .tick .datepl .date {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .ticketss .tick .datepl .pl {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  .ticketss .tick .place {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .ticketss .tick .time {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .ticketss .tick button {
+    margin-top: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    border-radius: 20px;
+  }
+
+  .ticketss .soldout {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ff5f2e;
+    text-decoration: line-through;
+  }
+}
+
+
+
+/* Large Screens (1025px – 1400px) */
+@media (min-width: 1025px) and (max-width: 1400px) {
+  .nav-links {
+    gap: 20px;
+    margin-right: 30px;
+  }
+
+  .mapp .textt {
+    font-size: 55px;
+  }
+
+  .all-events .titl {
+    font-size: 55px;
+  }
+
+  .all-events .vid {
+    height: 500px;
+  }
+
+  .ticketss {
+    padding: 40px 80px;
+  }
+}
+
+/* Medium Screens (Tablet / Small Laptops: 1300px – 789px) */
+@media (max-width: 1200px) and (min-width: 769px) {
+  .ticketss {
+    padding: 30px 80px;
+  }
+
+  .ticketss .tick {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #222;
+  }
+
+  /* Left side: date + place stacked */
+  .ticketss .tick .datepl {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  }
+
+  /* Right side: venue + time aligned right */
+  .ticketss .tick .place,
+  .ticketss .tick .time {
+    flex: 1;
+    text-align: left;
+  }
+
+  /* Button below date */
+  .ticketss .tick button,
+  .ticketss .tick .soldout {
+    margin-top: 10px;
+    align-self: flex-start;
+  }
+}
+
+/* Footer Responsive (≤1111px) */
+@media (max-width: 1111px) {
+  .footer-3 .contttt {
+    padding: 40px 20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .footer-3 .leftt {
+    order: 1; /* stays first */
+  }
+
+  .footer-3 .right {
+    order: 2; /* moves below left */
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 533px) {
+  .footer-3 .right .subscribe-box {
+    display: flex;
+    flex-direction: column; /* stack input & button */
+    align-items: center;
+    gap: 10px; /* spacing between input and button */
+    width: 90%; 
+    margin: 0 auto;
+  }
+  .footer-3 .right .subscribe-box ::placeholder{
+    align-items: center;
+  }
+
+  .footer-3 .right .subscribe-box input,
+  .footer-3 .right .subscribe-box button {
+    width: 100%; /* make both take full width */
+  }
+}
+
+
+/* @media (max-width: 1111px) and (min-width: 701px) {
+  .all-events {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .all-events .conttt {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .all-events .vid {
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+  }
+
+  .all-events .vid video {
+    height: auto;
+    max-height: 400px;
+  }
+} */
+
+@media (max-width: 1111px) {
+  .all-events {
+    position: relative;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .all-events .vid {
+    width: 100%;
+    height: 450px;
+    position: relative;
+  }
+
+  .all-events .vid video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .all-events .conttt {
+    position: absolute; 
+    top: 10%;             
+    left: 50%;
+    transform: translateX(-48%);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start;
+    width: 90%;
+    color: #fff;
+    z-index: 2;
+    text-align: left;
+  }
+
+  .all-events .titl {
+    font-size: clamp(28px, 6vw, 40px);
+  }
+
+  .all-events p {
+    font-size: clamp(14px, 3.5vw, 18px);
+    line-height: 1.4em;
+  }
+
+  .all-events .conttt button {
+    padding: 10px 20px;
+    font-size: clamp(12px, 3vw, 14px);
+  }
+
+  .all-events .conttt .city,
+  .all-events .conttt .attend {
+    font-size: clamp(16px, 3.5vw, 20px);
+  }
+
+  /* optional dark overlay for readability */
+  .all-events .vid::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); 
+    z-index: 1;
+  }
+}

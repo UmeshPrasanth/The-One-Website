@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The One — Book Event Tickets</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1d1f21, #3b3b98);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    .booking-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 40px;
+      width: 400px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .booking-card:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 25px;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: 600;
+      color: #eee;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background: rgba(4, 4, 4, 0.2);
+      color: #221f1f;
+      font-size: 14px;
+      margin-bottom: 15px;
+      transition: background 0.3s ease;
+    }
+
+    input::placeholder {
+      color: #c8c0c0;
+    }
+
+    input:focus, select:focus {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    button {
+      width: 100%;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      border: none;
+      padding: 12px;
+      border-radius: 12px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 16px;
+      letter-spacing: 1px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #0072ff, #00c6ff);
+      transform: translateY(-2px);
+    }
+
+    #response {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="booking-card">
+    <h2>🎫 Book Your Event</h2>
+    <form id="bookingForm">
+      <label for="event">Select Event</label>
+      <select id="event" required>
+        <option value="">-- Choose an Event --</option>
+        <option value="1">WIENER STATHALE</option>
+        <option value="2">NEW YORK EVENT</option>
+        <option value="3">LANXESS ARENA</option>
+      </select>
+
+      <label>Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label>Email</label>
+      <input type="email" id="email" placeholder="example@email.com" required>
+
+      <label>Phone</label>
+      <input type="text" id="phone" placeholder="+91 9876543210" required>
+
+      <label>Number of Tickets</label>
+      <input type="number" id="numTickets" placeholder="1" min="1" required>
+
+      <button type="submit">Confirm Booking</button>
+    </form>
+
+    <div id="response"></div>
+  </div>
+
+  <script>
+    document.getElementById("bookingForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const responseDiv = document.getElementById("response");
+      responseDiv.style.color = "#fff";
+      responseDiv.innerText = "Processing your booking...";
+
+      const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        eventId: document.getElementById("event").value,
+        numTickets: document.getElementById("numTickets").value
+      };
+
+      try {
+        const response = await fetch("http://localhost:8080/api/bookings/book", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          responseDiv.style.color = "#00ffcc";
+          responseDiv.innerText = `✅ ${result.message}\nBooking ID: ${result.bookingId}\nEvent: ${result.event}`;
+        } else {
+          responseDiv.style.color = "#ff6b6b";
+          responseDiv.innerText = `❌ Error: ${result.error || "Booking failed."}`;
+        }
+      } catch (err) {
+        responseDiv.style.color = "#ff6b6b";
+        responseDiv.innerText = "❌ Could not connect to server. Is backend running?";
+      }
+    });
+  </script>
+</body>
+</html>

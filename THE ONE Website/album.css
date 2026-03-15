@@ -1,0 +1,226 @@
+/* Album Section */
+.album-section {
+  padding: 0 30px;
+  text-align: center;
+}
+
+.album-section .album-tit {
+  margin-bottom: 50px;
+}
+
+.album-section .album-tit h2 {
+  font-size: 60px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.album-section .album-tit p {
+  font-size: 20px;
+  color: #908a8a;
+  line-height: 1.6;
+}
+
+/* Grid layout */
+.cards ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px 40px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1300px;
+}
+
+.cards li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.album-cards {
+  position: relative;
+  width: 100%;
+  max-width: 387px;
+  /* aspect-ratio: 1/1; */
+  overflow: hidden;
+  /* margin: 0 auto; */
+}
+
+
+.album-cards img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+  transition: 0.2s ease;
+  border-radius: 1px;
+  margin-bottom: 10px;
+}
+
+.album-cards img:hover {
+  transform: scale(1.05);
+}
+
+.album-cards p {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: 700;
+  color: #908a8a;
+  letter-spacing: 4px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.album-cards h4 {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 25px;
+  color: #e3dede;
+  text-align: center;
+  letter-spacing: 3px;
+  font-family:'Times New Roman', Times, serif;
+}
+.textmsg {
+  margin-top: 15px;
+}
+
+.textmsg h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.textmsg p {
+  font-size: 18px;
+  color: #ccc;
+}
+
+
+
+
+/* Responsive - Albums */
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* For screens up to 1525px */
+@media (max-width: 1525px) {
+  .cards ul {
+    max-width: 1100px;
+    gap: 40px 30px;
+  }
+}
+
+/* For screens up to 1200px */
+@media (max-width: 1200px) {
+  .album-section .album-tit h2 {
+    font-size: 50px;
+  }
+  .album-section .album-tit p {
+    font-size: 18px;
+  }
+  .cards ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px 25px;
+  }
+}
+
+/* For screens up to 1024px */
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: 18px;
+    margin-right: 20px;
+  }
+  .cards ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  .album-cards h4 {
+    font-size: 16px;
+  }
+}
+
+/* For screens up to 999px */
+@media (max-width: 999px) {
+  .album-section .album-tit h2 {
+    font-size: 45px;
+  }
+  .album-section .album-tit p {
+    font-size: 17px;
+  }
+  .cards ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  .foot .top {
+    flex-direction: column;
+    gap: 25px;
+  }
+  .foot .down {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+/* For tablets up to 768px */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .cards ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  .album-section .album-tit h2 {
+    font-size: 40px;
+  }
+  .album-section .album-tit p {
+    font-size: 16px;
+  }
+}
+
+/* For screens up to 767px (small tablets/large phones) */
+@media (max-width: 767px) {
+  .cards ul {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .album-section .album-tit h2 {
+    font-size: 35px;
+  }
+  .album-section .album-tit p {
+    font-size: 15px;
+  }
+}
+
+/* For small phones up to 480px */
+@media (max-width: 480px) {
+  .album-section .album-tit h2 {
+    font-size: 28px;
+  }
+  .album-section .album-tit p {
+    font-size: 14px;
+  }
+  .cards ul {
+    gap: 20px;
+  }
+  .album-cards h4 {
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+  .textmsg h3 {
+    font-size: 18px;
+  }
+  .textmsg p {
+    font-size: 14px;
+  }
+}

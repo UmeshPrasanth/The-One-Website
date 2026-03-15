@@ -1,0 +1,422 @@
+/* Enhanced styles for the concert booking system */
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    border: none;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #fff;
+}
+
+/* Authentication Styles */
+.auth-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #333;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+}
+
+.tab-btn.active {
+    color: #fff;
+    border-bottom: 2px solid #ff6b6b;
+}
+
+.auth-tab {
+    display: none;
+}
+
+.auth-tab.active {
+    display: block;
+}
+
+.auth-tab form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-tab input {
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: #2a2a2a;
+    color: #fff;
+    font-size: 16px;
+}
+
+.auth-tab input:focus {
+    outline: none;
+    border-color: #ff6b6b;
+}
+
+.auth-tab button {
+    padding: 12px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.auth-tab button:hover {
+    transform: translateY(-2px);
+}
+
+/* User Info Styles */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary {
+    padding: 8px 16px;
+    background: #4a90e2;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-secondary:hover {
+    background: #357abd;
+}
+
+.btn-logout {
+    padding: 8px 16px;
+    background: #e74c3c;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-logout:hover {
+    background: #c0392b;
+}
+
+/* Event Cards Styles */
+#events-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.event-card {
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    border-radius: 15px;
+    padding: 20px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.event-name {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.event-price {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.event-details p {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.event-details i {
+    color: #ff6b6b;
+    width: 16px;
+}
+
+.event-availability {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.tickets-available {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4caf50;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+.book-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.book-btn:hover {
+    transform: translateY(-2px);
+}
+
+.sold-out {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background: #666;
+    color: #ccc;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* Booking Form Styles */
+.booking-details {
+    background: rgba(255, 107, 107, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.booking-details h3 {
+    margin: 0 0 10px 0;
+    color: #ff6b6b;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: #2a2a2a;
+    color: #fff;
+    font-size: 16px;
+}
+
+.total-price {
+    background: rgba(76, 175, 80, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+
+/* Orders Modal Styles */
+.orders-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.order-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 4px solid #ff6b6b;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.order-header h4 {
+    margin: 0;
+    color: #ff6b6b;
+}
+
+.order-status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.status-confirmed {
+    background: rgba(76, 175, 80, 0.3);
+    color: #4caf50;
+}
+
+.status-pending {
+    background: rgba(255, 193, 7, 0.3);
+    color: #ffc107;
+}
+
+.order-details p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+/* Message Container Styles */
+.message-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+}
+
+.message {
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    animation: messageSlideIn 0.3s ease-out;
+    min-width: 250px;
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.message-success {
+    background: rgba(76, 175, 80, 0.9);
+    color: #fff;
+}
+
+.message-error {
+    background: rgba(244, 67, 54, 0.9);
+    color: #fff;
+}
+
+.message-info {
+    background: rgba(33, 150, 243, 0.9);
+    color: #fff;
+}
+
+/* Enhanced existing ticket styles */
+.tick button {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: transform 0.2s !important;
+}
+
+.tick button:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+        padding: 20px;
+    }
+    
+    #events-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+    
+    .user-info {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}

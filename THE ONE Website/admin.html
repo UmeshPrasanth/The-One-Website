@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Admin • THE ONE — Reviews Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  :root{
+    --bg:#0f0f10;
+    --card:#181818;
+    --muted:#9a9a9a;
+    --accent:#bd311e; /* red used in your CSS */
+    --glass: rgba(255,255,255,0.03);
+    --success: #3bbf7a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background: linear-gradient(180deg, #0b0b0b 0%, #0f0f10 100%);
+    color:#eee;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  .wrap{
+    max-width:1200px;
+    margin:28px auto;
+    padding:24px;
+  }
+
+  .topbar{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+  }
+  .brand{
+    display:flex;
+    gap:14px;
+    align-items:center;
+  }
+  .brand .logo{
+    width:46px; height:46px; border-radius:8px;
+    background:linear-gradient(135deg,var(--accent),#7f0000);
+    display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff;
+    box-shadow:0 8px 30px rgba(0,0,0,0.6);
+  }
+  .brand h1{ font-size:18px; margin:0; font-weight:600; letter-spacing:0.2px;}
+  .brand p{ margin:0; color:var(--muted); font-size:12px; }
+
+  .controls{
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+
+  .search {
+    display:flex;
+    gap:8px;
+    align-items:center;
+    background:var(--card);
+    padding:6px 8px;
+    border-radius:10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  }
+  .search input{
+    background:transparent;
+    border:none;
+    outline:none;
+    color:#fff;
+    width:320px;
+    padding:8px;
+    font-size:14px;
+  }
+  .btn {
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:9px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    box-shadow: 0 6px 18px rgba(189,49,30,0.12);
+  }
+  .btn.ghost{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.06);
+    color:#fff;
+  }
+  .btn.logout { background:#333; color:#fff; border-radius:8px; padding:8px 10px; }
+
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:12px;
+    padding:14px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    overflow:hidden;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+    min-width:900px;
+  }
+  thead th{
+    text-align:left;
+    padding:12px 14px;
+    font-weight:600;
+    color:#ddd;
+    background:linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    position:sticky; top:0;
+  }
+  tbody td{
+    padding:12px 14px;
+    vertical-align:middle;
+    border-bottom:1px solid rgba(255,255,255,0.03);
+    color:#e8e8e8;
+  }
+
+  tbody tr.unread td { background: linear-gradient(90deg, rgba(189,49,30,0.03), transparent); }
+  .small { font-size:13px; color:var(--muted); }
+
+  .actions { display:flex; gap:8px; align-items:center; }
+  .pill {
+    background:var(--glass);
+    padding:6px 10px;
+    border-radius:999px;
+    font-size:13px;
+    color:var(--muted);
+  }
+  .toggle-read {
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.06);
+    padding:6px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    color:#fff;
+  }
+  .toggle-read.read { border-color: rgba(59,191,122,0.2); color:var(--success); }
+
+  .delete-btn {
+    background:#3b3b3b; color:#fff; border:none; padding:7px 10px; border-radius:8px; cursor:pointer;
+  }
+  .delete-btn:hover { background:#5a1b1b; color:#fff; }
+
+  .pagination {
+    display:flex;
+    gap:8px;
+    align-items:center;
+    justify-content:flex-end;
+    padding:14px 0;
+  }
+  .page-info { color:var(--muted); font-size:13px; margin-right:auto; }
+
+  /* responsive */
+  @media (max-width:1000px){
+    .search input{width:200px}
+    table{ min-width:760px; font-size:13px; }
+  }
+  @media (max-width:700px){
+    .search input{width:120px}
+    .controls{flex-direction:column; align-items:flex-end}
+  }
+
+  /* smooth transitions */
+  .fade {
+    transition: all 240ms ease;
+  }
+  .row-fade-out {
+    animation: fadeOut 260ms forwards;
+  }
+  @keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0) scale(1); }
+    to { opacity: 0; transform: translateY(-8px) scale(.98); height:0; padding:0; margin:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">1</div>
+      <div>
+        <h1>THE ONE — Admin Dashboard</h1>
+        <p class="small">Manage user reviews • secure area</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="search card" role="search" aria-label="Search reviews">
+        <i class="fa fa-search" style="color:var(--muted)"></i>
+        <input id="searchInput" placeholder="Search by name, email or comment..." />
+        <button id="searchBtn" class="btn ghost">Search</button>
+        <button id="clearBtn" class="btn ghost" title="Clear">Clear</button>
+      </div>
+
+      <button onclick="window.location.href='bookingadmin.html'" class="btn btn-primary" style="padding: 5px 10px; font-size: 12px;">Manage Bookings</button>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <select id="perPage" class="pill" title="Rows per page">
+          <option value="5">5 / page</option>
+          <option value="10" selected>10 / page</option>
+          <option value="20">20 / page</option>
+          <option value="50">50 / page</option>
+        </select>
+        <button id="logoutBtn" class="btn logout">Logout</button>
+      </div>
+    </div>
+  </div>
+  <!-- ✅ Add this new button anywhere suitable in your admin.html -->
+
+
+  <div class="card">
+    <div style="overflow:auto;">
+      <table id="reviewsTable" class="fade" role="table" aria-label="User reviews table">
+        <thead>
+          <tr>
+            <th style="width:60px">ID</th>
+            <th style="width:180px">Name</th>
+            <th style="width:220px">Email</th>
+            <th>Comment</th>
+            <th style="width:160px">Status / Actions</th>
+          </tr>
+        </thead>
+        <tbody id="reviewTableBody">
+          <tr><td colspan="5" style="text-align:center; padding:40px 0;">Loading reviews…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pagination" style="margin-top:12px;">
+      <div class="page-info" id="pageInfo">Showing 0 reviews</div>
+      <button id="prevBtn" class="btn ghost">Prev</button>
+      <button id="nextBtn" class="btn">Next</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  
+/*
+  Admin dashboard JS
+  - Uses backend at http://localhost:8085
+  - Endpoints:
+    GET  /api/reviews
+    GET  /api/reviews/search?query=...
+    DELETE /api/reviews/{id}
+    PUT    /api/reviews/{id}/toggle-read
+  - Login check: requires localStorage.loggedIn === "true"
+*/
+
+const API_BASE = "http://localhost:8085/api/reviews";
+let reviews = [];        // all reviews fetched from server (or search results)
+let currentPage = 1;
+let perPage = parseInt(document.getElementById('perPage').value,10) || 10;
+let totalPages = 1;
+let currentQuery = "";
+
+// ------------ login check -------------
+function ensureLoggedIn() {
+  if (localStorage.getItem('loggedIn') !== 'true') {
+    // redirect to login.html (hidden link)
+    alert("You must be logged in to view the admin dashboard.");
+    window.location.href = 'login.html';
+    return false;
+  }
+  return true;
+}
+
+if (!ensureLoggedIn()) {
+  // will redirect - stop running further
+}
+
+// ------------ fetch utils -------------
+// async function fetchAllReviews() {
+//   const res = await fetch(`${API_BASE}/reviews`);
+//   if (!res.ok) throw new Error('Failed to fetch reviews');
+//   return res.json();
+// }
+// async function fetchSearch(query) {
+//   const res = await fetch(`${API_BASE}/reviews/search?query=${encodeURIComponent(query)}`);
+//   if (!res.ok) throw new Error('Search failed');
+//   return res.json();
+// }
+
+async function fetchAllReviews() {
+  const res = await fetch(`${API_BASE}`);
+  if (!res.ok) throw new Error('Failed to fetch reviews');
+  return res.json();
+}
+
+async function fetchSearch(query) {
+  const res = await fetch(`${API_BASE}/search?query=${encodeURIComponent(query)}`);
+  if (!res.ok) throw new Error('Search failed');
+  return res.json();
+}
+
+
+
+// ------------ render & pagination -------------
+function computePagination() {
+  perPage = parseInt(document.getElementById('perPage').value,10) || 10;
+  totalPages = Math.max(1, Math.ceil(reviews.length / perPage));
+  if (currentPage > totalPages) currentPage = totalPages;
+}
+
+function renderTable() {
+  const tbody = document.getElementById('reviewTableBody');
+  if (!reviews || reviews.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:40px 0;">No reviews found</td></tr>`;
+    document.getElementById('pageInfo').textContent = "Showing 0 reviews";
+    return;
+  }
+
+  computePagination();
+  const start = (currentPage - 1) * perPage;
+  const pageItems = reviews.slice(start, start + perPage);
+
+  tbody.innerHTML = pageItems.map(r => {
+    const commentShort = escapeHtml(r.comment || '').replace(/\n/g,'<br>');
+    const readClass = r.readFlag ? 'read' : 'unread';
+    const readLabel = r.readFlag ? 'Read' : 'Unread';
+    return `
+      <tr class="${r.readFlag ? '' : 'unread'}" data-id="${r.id}">
+        <td class="small">${r.id}</td>
+        <td><strong>${escapeHtml(r.name || '')}</strong></td>
+        <td class="small">${escapeHtml(r.email || '')}</td>
+        <td>${commentShort}</td>
+        <td>
+          <div class="actions">
+            <span class="pill">${readLabel}</span>
+            <button data-id="${r.id}" class="toggle-read ${r.readFlag ? 'read' : ''}" title="Toggle read">${ r.readFlag ? '<i class="fa fa-eye"></i>':'<i class="fa fa-eye-slash"></i>' }</button>
+            <button data-id="${r.id}" class="delete-btn" title="Delete review"><i class="fa fa-trash"></i></button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+
+  // page info text
+  const showingFrom = start + 1;
+  const showingTo = Math.min(start + perPage, reviews.length);
+  document.getElementById('pageInfo').textContent = `Showing ${showingFrom}–${showingTo} of ${reviews.length} reviews • page ${currentPage} / ${totalPages}`;
+
+  // attach event listeners for the rows
+  attachRowListeners();
+}
+
+function attachRowListeners() {
+  document.querySelectorAll('.delete-btn').forEach(btn=>{
+    btn.onclick = async (e)=>{
+      const id = btn.getAttribute('data-id');
+      if (!confirm('Delete this review permanently?')) return;
+      try {
+        const res = await fetch(`${API_BASE}/${id}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error('Delete failed');
+        // optimistic remove from local list
+        reviews = reviews.filter(r => String(r.id) !== String(id));
+        // simple fade animation: remove row
+        const row = btn.closest('tr');
+        row.classList.add('row-fade-out');
+        setTimeout(() => renderTable(), 260);
+      } catch(err) {
+        console.error(err);
+        alert('Could not delete review. Check the console.');
+      }
+    };
+  });
+
+  document.querySelectorAll('.toggle-read').forEach(btn=>{
+    btn.onclick = async (e)=>{
+      const id = btn.getAttribute('data-id');
+      try {
+        const res = await fetch(`${API_BASE}/${id}/toggle-read`, { method: 'PUT' });
+        if (!res.ok) throw new Error('Toggle failed');
+        const updated = await res.json();
+        // update local copy
+        reviews = reviews.map(r => (String(r.id) === String(updated.id) ? updated : r));
+        renderTable();
+      } catch(err) {
+        console.error(err);
+        alert('Could not toggle read status.');
+      }
+    };
+  });
+}
+
+// ------------ search & load -------------
+async function loadAndRender(query = "") {
+  try {
+    // show loading skeleton
+    document.getElementById('reviewTableBody').innerHTML = `<tr><td colspan="5" style="text-align:center;padding:40px 0;">Loading reviews…</td></tr>`;
+    if (query && query.trim() !== "") {
+      reviews = await fetchSearch(query.trim());
+      currentQuery = query.trim();
+    } else {
+      reviews = await fetchAllReviews();
+      currentQuery = "";
+    }
+    currentPage = 1;
+    renderTable();
+  } catch (err) {
+    console.error(err);
+    document.getElementById('reviewTableBody').innerHTML = `<tr><td colspan="5" style="text-align:center;padding:40px 0;">Error loading reviews. Check server.</td></tr>`;
+    document.getElementById('pageInfo').textContent = "Error loading";
+  }
+}
+
+// ------------ helpers -------------
+function escapeHtml(s) {
+  if (!s) return '';
+  return s.replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'})[m]; });
+}
+
+// ------------ UI bindings -------------
+document.getElementById('searchBtn').addEventListener('click', ()=>{
+  const q = document.getElementById('searchInput').value;
+  loadAndRender(q);
+});
+document.getElementById('clearBtn').addEventListener('click', ()=>{
+  document.getElementById('searchInput').value = '';
+  loadAndRender('');
+});
+document.getElementById('searchInput').addEventListener('keydown', (e)=>{
+  if (e.key === 'Enter') { loadAndRender(document.getElementById('searchInput').value); }
+});
+document.getElementById('perPage').addEventListener('change', ()=>{
+  perPage = parseInt(document.getElementById('perPage').value,10);
+  currentPage = 1;
+  renderTable();
+});
+document.getElementById('prevBtn').addEventListener('click', ()=>{
+  if (currentPage > 1) { currentPage--; renderTable(); }
+});
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+  if (currentPage < totalPages) { currentPage++; renderTable(); }
+});
+document.getElementById('logoutBtn').addEventListener('click', ()=>{
+  if (confirm('Logout from admin?')) {
+    localStorage.removeItem('loggedIn');
+    window.location.href = 'login.html';
+  }
+});
+
+// initial load
+loadAndRender(''); // fetch all reviews on page open
+</script>
+
+<!-- <script src="admin.js"></script> -->
+</body>
+</html>

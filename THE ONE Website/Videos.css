@@ -1,0 +1,263 @@
+header{
+    box-shadow: none;
+    max-height: 100px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #151515;
+  color: #fff;
+}
+
+/* Fade-In */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.9s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Navbar */
+
+header {
+  background: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  opacity: 1;
+  transition: background-color 0.6s ease, opacity 0.6s ease;
+  box-shadow: none;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 5px 30px 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  width: 140px;
+  height: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin-right: 65px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+.nav-links li a:hover {
+  color: rgb(189, 49, 30);
+}
+
+.cart i {
+  color: white;
+  font-size: 18px;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 30px;
+  height: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 24px;
+  gap: 5px;
+  z-index: 3;
+  margin-right: 60px;
+}
+
+
+/* videoHead */
+.videoHead{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+}
+.videoHead .part1{
+    text-align: center;
+}
+.part1 p{
+    color: #908a8a;
+    font-size: 18px;
+    line-height: 35px;
+    margin-bottom: 7px;
+}
+.part1 h2{
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    margin-bottom: 15px;
+    line-height: 65px;
+}
+.part1 img{
+    height: 400px;
+    width: 1293px;
+    margin-bottom: 10px;
+    filter: opacity(0.8);
+}
+
+.part1 .pp{
+  padding: 15px 15px 0px 15px;
+}
+.part1 h3{
+    color: rgb(255, 255, 255);
+    font-size: 38px;
+    padding: 15px;
+}
+
+.play-card {
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(255,255,255,0.9);
+  opacity: 0.8;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  text-decoration: none;
+  overflow: visible;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.play-card:hover{
+  background: rgba(158, 151, 151, 0.9);
+}
+
+.play-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 76px;
+  height: 76px;
+  border: 2px solid rgb(97, 95, 95);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.imgg:hover::before{
+  transform: translate(-50%, -50%) scale(1.4);
+  opacity: 0;
+}
+
+.play-card i {
+  font-size: 22px;
+  color: black;
+  position: relative;
+  z-index: 3;
+}
+
+/* others */
+
+.others{
+  padding: 60px 100px;
+  margin-bottom: 50px;
+}
+.others .headdd{
+  display: flex;
+  justify-content: space-between;
+}
+.others .headdd h3{
+  color: #f9f9f9;
+  font-size: 25px;
+}
+.others .head2 a{
+  text-decoration: none;
+  color: #908a8a;
+  font-size: 20px;
+  transition: 0.2s ease-in-out;
+  margin: 0px 10px 0px 10px;
+}
+.others .head2 a:hover{
+  color: #ffffff;
+}
+.others .hr-tag{
+  display: block;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  unicode-bidi: isolate;
+  overflow: hidden;
+  border-style: inset;
+  border-width: 1px;
+  opacity: .1;
+  margin: 25px 0px 70px 0px;
+}
+
+
+/* Video grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 80px;
+  justify-items: center;
+}
+
+.video-item {
+  opacity: 1;
+  transform: scale(1);
+  width: 100%;
+  max-width: 600px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.video-item.hide {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+.video-item .contt{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.video-item .contt p{
+  font-size: 21px;
+  color: #908a8a;
+}
+.video-item .contt h3{
+  font-size: 30px;
+  color: #f9f9f9;
+}
+
+video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 6px;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.5);
+}

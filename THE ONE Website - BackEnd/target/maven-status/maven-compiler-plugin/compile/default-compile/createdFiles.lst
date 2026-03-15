@@ -1,0 +1,6 @@
+com\example\contact\controller\AuthController.class
+com\example\contact\model\Review.class
+com\example\contact\ContactApplication.class
+com\example\contact\controller\ReviewController.class
+com\example\contact\repository\ReviewRepository.class
+com\example\contact\service\ReviewService.class

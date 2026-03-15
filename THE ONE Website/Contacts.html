@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The-One/ Contacts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="events1.css">
+    <link rel="stylesheet" href="HomeResponsive.css">
+    <link rel="stylesheet" href="eventsResponsive.css">
+    <link rel="stylesheet" href="Contacts.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Space+Grotesk&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!--Header Navbar-->
+    <header class="fade-in">
+        <div class="nav-container">
+            <div class="logo">
+            <img src="Images/THE_ONE_-_Bold_Simplicity-removebg-.png" alt="THE-ONE">
+            </div>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="album.html">Albums</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="Gallery.html">Gallery</a></li>
+                <li><a href="Videos.html">Videos</a></li>
+                <li><a href="Contacts.html">Contact</a></li>
+            </ul>
+            <div class="cart">
+                <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </div>
+    </header>
+
+<!--  contactpage-->
+  <div class="contact-page">
+    <div class="contttt">
+        <div class="left">
+            <h1 class="hdtl">Get in touch</h1>
+            <p>feel free to contact us and we will getback to you <br>as soon as we can.</p>
+            <form id="contactForm">
+              <input id="comment" class="commentt" type="text" placeholder="Comment">
+              <input id="name" class="UrName" type="text" placeholder="Your Name">
+              <input id="email" class="Emaill" type="text" placeholder="Your Email">
+              <button type="submit">Send Message</button>
+            </form>
+        </div>
+        <div class="right">
+                <h3>Reach out to us</h3>
+                <p class="add">Address: <br>
+                    Jeppiaar Nagar, <br>SH 49A, Chennai, <br>Tamil Nadu 600119</p>
+                <p class="phh">Manager Phones: <br>
+                    +91 8664728723 <br>
+                    +91 7356547279
+                </p>
+                <p class="mail">
+                    Emails: <br>
+                    events@theone.io <br>
+                    manager@theone.io
+                </p>
+        </div>
+    </div>
+
+  <div class="image" style="background: url(Images/ContactsBGG.jpg);"></div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const comment = document.getElementById("comment").value.trim();
+
+    if (!name || !email || !comment) {
+      alert("Please fill in all fields!");
+      return;
+    }
+
+    const reviewData = { name, email, comment };
+
+    try {
+      const response = await fetch("http://localhost:8085/api/reviews", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(reviewData)
+      });
+
+      if (response.ok) {
+        alert("✅ Your review has been submitted successfully!");
+        form.reset();
+      } else {
+        const errMsg = await response.text();
+        console.error("Server error:", errMsg);
+        alert("❌ Submission failed. Check console for details.");
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+      alert("⚠️ Could not connect to the backend. Make sure it's running!");
+    }
+  });
+});
+</script>
+
+
+
+<script src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+</body>
+</html> 

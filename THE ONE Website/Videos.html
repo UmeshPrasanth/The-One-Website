@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The-One/ Album</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="album.css">
+    <link rel="stylesheet" href="HomeResponsive.css">
+    <link rel="stylesheet" href="eventsResponsive.css">
+    <link rel="stylesheet" href="events1.css">
+    <link rel="stylesheet" href="Videos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Space+Grotesk&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+</head>
+<body>
+    
+    <!--Header Navbar-->
+    <header class="fade-in">
+        <div class="nav-container">
+            <div class="logo">
+            <img src="Images/THE_ONE_-_Bold_Simplicity-removebg-.png" alt="THE-ONE">
+            </div>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="album.html">Albums</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="Gallery.html">Gallery</a></li>
+                <li><a href="Videos.html">Videos</a></li>
+                <li><a href="Contacts.html">Contact</a></li>
+            </ul>
+            <div class="cart">
+                <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </div>
+    </header>
+
+<section class="videoHead fade-in">
+    <div class="part1">
+        <p>Video Gallery</p>
+        <h2>Videos We Share <br> With You</h2>
+        <div class="imgg">
+            <img src="Images/VideoHead.avif" alt="vidhead1">
+            <a href="Videos/PowerHouse.mp4" class="play-card"><i class="ri-play-fill"></i></a>
+        </div>
+        <p class="pp">Video Clip</p>
+        <h3>New Video Clip - PowerHouse ft. Anirudh Is Out Now</h3>
+    </div>
+</section>
+
+<div class="spacer-60"></div>
+
+<section class="others fade-in">
+    <div class="headdd">
+        <div class="head1">
+            <h3>Other videos</h3>
+        </div>
+        <div class="head2">
+            <a href="#" class="active" data-filter="all">All Videos</a>
+            <a href="#" data-filter="concerts">Concerts</a>
+            <a href="#" data-filter="live">Live Performances</a>
+            <a href="#" data-filter="clips">Video Clips</a>
+        </div>
+    </div>
+    <hr class="hr-tag">
+
+    <div class="video-grid">
+    <div class="video-item concerts">
+      <video controls poster="Images/Videos1 (1).jpg">
+        <source src="Videos/Mannipayaa.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="contt">
+        <p>Concert</p>
+        <h3>Mannipayaa</h3>
+      </div>
+    </div>
+
+    <div class="video-item live">
+      <video controls poster="Images/Videos2.jpg">
+        <source src="Videos/PowerHouse.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="contt">
+        <p>Live Performance</p>
+        <h3>Arangam</h3>
+      </div>
+    </div>
+
+    <div class="video-item clips">
+      <video controls poster="Images/Videos3 (1).jpg">
+        <source src="Videos/UyireUnUyirena.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="contt">
+        <p>Video Clip</p>
+        <h3>Uyire Un Uyirena</h3>
+      </div>
+    </div>
+
+    <div class="video-item concerts">
+      <video controls poster="Images/gallery5 (1).jpg">
+        <source src="Videos/PowerHouse.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="contt">
+        <p>Concert</p>
+        <h3>PowerHouse</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer class="fade-in">
+<div class="foot">
+  <div class="top">
+    <img src="Images/THE_ONE_-_Bold_Simplicity-removebg-.png" alt="logo">
+    <p class="address">Sathyabama University, SH 49A, Chennai, Tamil Nadu 600119
+      <br>
+      <a href="#" class="idacc">listenup@theone.com</a>  |  <a href="#" class="phno">+91 7339137776</a>
+    </p>
+    <div class="icons">
+      <a href="#" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#" class="youtube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" class="spotify"><i class="fa-brands fa-spotify"></i></a>
+    </div>
+  </div>
+  <hr class="foothr">
+
+  <div class="down">
+    <p class="copyrights">© 2025 THE ONE - The Voice of a Generation</p>
+    <p class="owned">Handmade by UmeshShiva.io</p>
+  </div>
+</div>
+</footer>
+
+
+
+
+<script src="script.js"></script>
+<script src="Videos.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+</body>
+</html>
