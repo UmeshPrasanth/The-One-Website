@@ -1,7 +1,9 @@
-THE ONE – Band Music and Ticketing Platform
+THE ONE – Band Music and Ticketing Platform:
+
 THE ONE is a modern web platform designed for music lovers to explore bands, discover live music events, and book tickets seamlessly. The platform connects bands and audiences by providing an easy way to manage concerts, sell tickets, and engage with fans.
 
 Features:
+
 Event Discovery: Users can explore upcoming concerts and live music events.
 Band Profiles: Dedicated pages for bands showcasing their music, members, and upcoming performances.
 Online Ticket Booking: Secure ticket booking system for concerts and music shows.
