@@ -34,14 +34,21 @@ Admin Dashboard
 Tech Stack
 
 Java Spring Boot – Backend development
+
 HTML5 – Page structure
+
 CSS3 – Styling and layout
+
 JavaScript – Frontend functionality
+
 MySQL – Database management
+
 REST API – Communication between frontend and backend
+
 Git & GitHub – Version control
 
 Self-Hosting Guide
+
 Deploy with Vercel / Cloud Platforms
 
 You can deploy the frontend using Vercel, Netlify, or any cloud hosting platform and run the backend using Spring Boot server or cloud services like Render / Railway / AWS.
@@ -50,12 +57,14 @@ You can deploy the frontend using Vercel, Netlify, or any cloud hosting platform
 Alternatively:
 
 1. Clone the repository
+   
 git clone https://github.com/UmeshPrasanth/The-One-Website.git
 
 3. Navigate to project folder
+   
 cd THE-ONE-Band-Music-Ticketing-Platform
 
-4. Configure database
+5. Configure database
 
 Create a MySQL database and update the application.properties file.
 
@@ -64,11 +73,13 @@ spring.datasource.username=your_username
 spring.datasource.password=your_password
 
 4. Run the Spring Boot backend
+   
 mvn spring-boot:run
 
 or run the main application file in your IDE.
 
 5. Open the frontend
+   
 Open the frontend files in your browser or run using Live Server.
 
 Future Improvements
