@@ -80,6 +80,9 @@ Real-time seat selection for events
 Mobile application version
 
 Author
+
 UmeshPrasanth S
+
 B.E Computer Science and Engineering
+
 Sathyabama Institute of Science and Technology
